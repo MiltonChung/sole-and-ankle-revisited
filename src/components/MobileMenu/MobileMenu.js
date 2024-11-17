@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
+import { QUERIES } from '../../constants';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
@@ -13,7 +14,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <div>
+    <Wrapper>
       <button onClick={onDismiss}>Dismiss menu</button>
       <nav>
         <a href="/sale">Sale</a>
@@ -28,8 +29,16 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
         <a href="/privacy">Privacy Policy</a>
         <a href="/contact">Contact Us</a>
       </footer>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: revert;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: block;
+  }
+`
 
 export default MobileMenu;
